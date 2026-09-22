@@ -3,3 +3,6 @@ Break
 Bananas
 Eggs
 
+Apples
+Coffee
+Oatmeal
