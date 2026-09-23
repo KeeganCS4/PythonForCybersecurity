@@ -1,10 +1,6 @@
 Milk
-Break
+Bread
 Bananas
 Eggs
 
 Apples
-Coffee
-Oatmeal
-
-Energy Drinks

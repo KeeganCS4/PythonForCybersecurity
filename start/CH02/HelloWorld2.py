@@ -5,3 +5,6 @@
 # Suggestion, build out 1 line at a time
 # Once multiple print statemetns exist, put a breakpoint at first print line
 # Then walk through as an example of "debugging"
+print("Hello World!\n")
+
+name = input("What is your name? ")
