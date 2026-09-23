@@ -4,3 +4,6 @@ Bananas
 Eggs
 
 Apples
+chocolate
+popcorn
+bicycle
