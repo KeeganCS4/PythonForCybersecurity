@@ -14,3 +14,8 @@ user_name = input("What is your name? ")
 
 print("Hello " + user_name + "!")
 # say hello to user
+
+user_age = int(input("How old are you? "))
+age = user_age + 2
+print("You will be " + str(age) + " in 2 years!")
+# calculate user age
