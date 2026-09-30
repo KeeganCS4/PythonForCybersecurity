@@ -2,6 +2,16 @@
 # A more complex "Hello World" script in python with Inputs
 # Created 
 
-print("Hello World!\n")
-name = input("What is your name? ")
-print("\nHello, " + name + "!")
+print("Hello World!")
+# say hello to the world
+
+user_name = input("What is your name? ")
+# get user name
+
+print("Hello " + user_name + "!")
+# say hello to user
+
+user_age = int(input("How old are you? "))
+age = user_age + 2
+print("You will be " + str(age) + " in 2 years!")
+# calculate user age
