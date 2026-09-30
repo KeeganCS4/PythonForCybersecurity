@@ -6,6 +6,9 @@
 print("Hello World!\n")
 user_name = input("What is your name? ")
 
+# string formatting and concatenation
+print("Hello " + user_name)
+
 # string formatting and f-string
 print("Hello {0}".format(user_name))
 print(f"Hello {user_name}")
