@@ -8,7 +8,7 @@ print("Hello World!")
 user_name = input("What is your name? ")
 # get user name
 
-print("Hello " + user_name + "!")
+print("Hello " + user_name + "! Today is going to be a great Day!")
 # say hello to user
 
 user_age = int(input("How old are you? "))
