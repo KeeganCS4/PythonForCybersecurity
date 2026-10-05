@@ -1,21 +1,22 @@
 #!/usr/bin/env python3
 # A simple calculator to show math and conditionals
-# Created 
+# Created by: Keegan 9/21/26
+# Edited 10/5
 
 def doMath(numb1, numb2):
     match action:
         case "+":
             result = addition(numb1, numb2)
-            print("Answer: " + result)
+            print(f"Answer: {result}")
         case "-":
             result = subtraction(numb1, numb2)
-            print("Answer: " + result)
+            print(f"Answer: {result}")
         case "*":
             result = multiplication(numb1, numb2)
-            print("Answer: " + result)
+            print(f"Answer: {result}")
         case "/":
             result = division(numb1, numb2)
-            print("Answer: " + result)
+            print(f"Answer: {result}")
         case _:
             print("invalid input")
 # case ladder do call the operations rather than doing a bunch if statements
@@ -37,7 +38,7 @@ def division(numb1, numb2):
 # division function
 
 # action = input("What action would you like? \n1. addition\n2. subtraction\n3. multiplication\n4. division\n")
-numbers = input("Enter equation: ")
+numbers = input("Enter equation (separate everything with a space): ")
 # user input
 
 parts = numbers.split()
