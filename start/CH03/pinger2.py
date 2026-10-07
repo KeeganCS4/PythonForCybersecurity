@@ -9,7 +9,7 @@ ip_prefix = "192.168.0."
 
 for final_octet in range(10):
     #set IP address
-    adress = ip_prefix + str(final_octet)
+    adress = ip_prefix + str(final_octet + 1)
 
     #build ping CMD
     ping_cmd = f"ping -c 1 -w 1 {adress} > /dev/null 2>&1"
