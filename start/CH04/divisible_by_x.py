@@ -3,15 +3,18 @@
 # By Keegan 10/14
 
 # math function
-def divisible(numb1, numb2):
-    check = numb1 % numb2 # if the remainder is 0 then it divides
+def is_divisible(number, divisor):
+    check = number % divisor # checking for remainder
     if(check == 0):
-        print(f"{numb1} is divisible by {numb2}\n") # prints is divisible
+        return True # if there is no remainder returns True
     else:
-        print(f"{numb1} is NOT divisible by {numb2}\n") # prints is not divisible
+        return False # if there is a remainder returns False
 
 for i in range(2): # a loop to show both expected outputs
-    numb1 = int(input("What is the number: "))
-    numb2 = int(input("What is the divisor: "))
-    divisible(numb1, numb2)
-    
+    number = int(input("What is the number: ")) # gathers number
+    divisor = int(input("What is the divisor: ")) # gathers divisor
+
+    if(is_divisible(number, divisor) == True):
+        print(f"{number} is divisible by {divisor}\n") # prints is divisible
+    else:
+        print(f"{number} is NOT divisible by {divisor}\n") # prints is not divisible
