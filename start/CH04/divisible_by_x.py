@@ -4,14 +4,13 @@
 
 # math function
 def divisible(numb1, numb2):
-    check = numb1 % numb2
+    check = numb1 % numb2 # if the remainder is 0 then it divides
     if(check == 0):
-        print(f"{numb1} is divisible by {numb2}\n")
+        print(f"{numb1} is divisible by {numb2}\n") # prints is divisible
     else:
-        print(f"{numb1} is NOT divisible by {numb2}\n")
+        print(f"{numb1} is NOT divisible by {numb2}\n") # prints is not divisible
 
-
-for i in range(2):
+for i in range(2): # a loop to show both expected outputs
     numb1 = int(input("What is the number: "))
     numb2 = int(input("What is the divisor: "))
     divisible(numb1, numb2)
