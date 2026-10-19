@@ -4,26 +4,35 @@
 
 
 # Ask user for message
-message = input("Enter a message: ")
-encrypt = input("Encrypt or Decrypt? (e/d): ")
-rotate = int(input("Number of rotations:  "))
-newmsg = ""
+message = input("Enter a message: ").lower()
+final_message = ""
 
-if encrypt == "e":
-    # for eacher letter
-    for letter in message:
-        # Change letter to number, add {rotate}, change message back to text
-        letter = ord(letter) + rotate
-        # append new letter to newmsg
-        newmsg += chr(letter)
-    # print new message
-    print(newmsg)
-else: 
-    # for eacher letter
-    for letter in message:
-        # Change letter to number, remove {rotate}, change message back to text
-        letter = ord(letter) - rotate
-        # append new letter to newmsg
-        newmsg += chr(letter)
-    # print new message
-    print(newmsg)   
+# ASCII english alphabet is 97 - 122
+
+# for each letter convert to number -> rotate -> convert back to letter
+for letter in message:
+    # convert letter to number
+    ascii_num = ord(letter)
+
+    # if its not a special character add 13 otherwise pass it through
+    if(ascii_num < 97 or ascii_num > 122):
+        pass
+    else:
+        ascii_num = ascii_num + 13
+
+    # simple bypass that doesnt account for all special characters
+    # if ascii_num >= 97:
+    #     ascii_num = ascii_num + 13
+
+    # if past z, wrap around
+    if ascii_num > 122:
+        ascii_num = ascii_num - 26
+
+    # convert number to letter 
+    new_letter = chr(ascii_num)
+
+    # append new letter to newmsg
+    final_message = final_message + new_letter
+
+# print new message
+print(final_message)
