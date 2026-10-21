@@ -3,6 +3,7 @@
 # By Keegan 10/21
 
 from cryptography.fernet import Fernet
+import time
 
 # create key function
 def create_key():
@@ -38,37 +39,68 @@ def decrypt(message_encrypt, key):
     plain_text = plain_text.decode()
     return plain_text # Hello World
 
-# asks user to choose operation
-what_do = input("What do you want to do, Encrypt/Decrypt/Key (E/D/K) ").lower()
-what_do = what_do[0]
+# welcome banner
+print()
+banner = "Welcome to the encryption tool!"
+print(banner.center(65))
+print("=" * 65)
+what_do = ""
+save = False
+# a while loop that keeps the tool alive until you close with the exit command "c"
+while(what_do != "c"):
+    # asks user to choose operation
+    what_do = input("""What do you want to do? 
+    1. Encrypt\t\t(E)
+    2. Decrypt\t\t(D)
+    3. Generate Key\t(G)
+    4. Close Tool\t(C)
+    Operation: """).lower()
+    what_do = what_do[0]
+    time.sleep(1)
 
-# Key: yJb4bUvbJGzWIXuE-hGEEIbtYhd8utfpSoYfLdQka_8=
-# Encrypted message: AAAAABq2OU9g4C7VrSoVpR7PdM9VG3AfqM6AMfQqltfotX6x9np6noRts0Xxg_gmvaPPwh1mxkRJOq_cBOu1Y-EfF185rizww==
+    # Key: yJb4bUvbJGzWIXuE-hGEEIbtYhd8utfpSoYfLdQka_8=
+    # Encrypted message: AAAAABq2OU9g4C7VrSoVpR7PdM9VG3AfqM6AMfQqltfotX6x9np6noRts0Xxg_gmvaPPwh1mxkRJOq_cBOu1Y-EfF185rizww==
 
-# if user chooses to create key, calls create key function
-if(what_do == "k"):
-    key = create_key()
-    print(key)
-# if user chooses to encrypt, gathers plain text message and calls encrypt
-elif(what_do == "e"):
-    # get key
-    key = input("Key: ")
-    # get message
-    message_plain = input("Message: ")
-    # assign plain message to cipher_text since you are encrypting
-    cipher_text = encrypt(message_plain, key)
-    # print out encrypted text
-    print(cipher_text)
-# if user chooses to decrypt, gathers encrypted message and calls decrypt
-elif(what_do == "k"):
-    # get key
-    key = input("Key: ")
-    # get message
-    message_encrypt = input("Message: ")
-    # assign message to plain_text since you are decrypting
-    plain_text = decrypt(message_encrypt, key)
-    # print out plain text
-    print(plain_text)
-# if user inputs something incorrect
-else:
-    print("Invalid input")
+    # if user chooses to create key, calls create key function
+    if(what_do == "g"):
+        print("\nYou chose Generate Key!\n")
+        time.sleep(1)
+        key = create_key()
+        # tool already knows the key, this automatically applies the key
+        save_key = input("Would you like to save key? ").lower()
+        save_key = save_key[0]
+        if(save_key == "y"):
+            save = True
+        else:
+            print("Key: {key}\n")
+        time.sleep(1)
+    # if user chooses to encrypt, gathers plain text message and calls encrypt
+    elif(what_do == "e"):
+        print("\nYou chose Encryption!\n")
+        time.sleep(1)
+        # get key
+        if(save == True):
+            pass
+        else:
+            key = input("Key: ")
+        # get message
+        message_plain = input("Message: ")
+        # assign plain message to cipher_text since you are encrypting
+        cipher_text = encrypt(message_plain, key)
+        # print out encrypted text
+        print(f"Encrypted Message: {cipher_text}\n")
+        time.sleep(1)
+    # if user chooses to decrypt, gathers encrypted message and calls decrypt
+    elif(what_do == "d"):
+        # get key
+        if(save == True):
+            pass
+        else:
+            key = input("Key: ")
+        # get message
+        message_encrypt = input("\nMessage: ")
+        # assign message to plain_text since you are decrypting
+        plain_text = decrypt(message_encrypt, key)
+        # print out plain text
+        print(f"Decrypted Message: {plain_text}\n")
+        time.sleep(1)
