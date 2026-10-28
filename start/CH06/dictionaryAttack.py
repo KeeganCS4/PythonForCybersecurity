@@ -34,7 +34,6 @@ def split_shadow(shadowLine):
     user_shadow_line = split_shadow_parts[1]
     # salt
     user_salt = user_shadow_line.split("$")[2]
-    # password
     return (shadow_user, user_salt, user_shadow_line)
 
 
@@ -47,7 +46,7 @@ shadow_user, user_salt, user_shadow_line = split_shadow(shadow_line)
 
 password_found = False
 # load dictionary
-password_guesses = load_dictionary("top10.txt")
+password_guesses = load_dictionary("top10000000.txt")
 # for each line/guess
 for password_guess in password_guesses:
     # hash guess
