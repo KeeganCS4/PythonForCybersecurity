@@ -43,6 +43,7 @@ shadow_line = input("Line from shadow file: ") or sample_hash
 
 shadow_user, user_salt, user_shadow_line = split_shadow(shadow_line)
 
+count = 0
 
 password_found = False
 # load dictionary
@@ -54,10 +55,12 @@ for password_guess in password_guesses:
     # compare hash to guess
     if user_shadow_line == hashed_guess:
         # print guess
-        print(shadow_user, password_guess.strip())
+        print('\n',shadow_user, password_guess.strip())
         # quit
         password_found = True
         break
+    count += 1
+    print(f"Count: {count}", end='\r')
     
 # print not found
 if password_found == False:
