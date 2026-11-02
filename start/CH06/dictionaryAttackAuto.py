@@ -36,7 +36,8 @@ def split_shadow(shadowLine):
     return (shadow_user, user_salt, user_shadow_line)
 
 # load dictionary
-password_guesses = load_dictionary("top10000000.txt")
+password_guesses = load_dictionary("top1000.txt") # top10000000.txt, top1000.txt, top10.txt
+
 shadow_file = load_dictionary("shadow")
 
 shadow_entries = []
