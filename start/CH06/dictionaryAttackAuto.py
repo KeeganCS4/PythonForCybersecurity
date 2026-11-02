@@ -19,12 +19,11 @@ def load_dictionary(file_name):
     # read contents
     contents = f.readlines()
     return contents
-
 # create hash function
 def create_hash(password, salt):
     hashed_pass = sha512_crypt.using(rounds=5000).hash(password, salt=salt)
     return hashed_pass
-
+# split shadow line
 def split_shadow(shadowLine):
     # separate username from shadow line
     split_shadow_parts = shadowLine.split(":")
@@ -37,27 +36,76 @@ def split_shadow(shadowLine):
     return (shadow_user, user_salt, user_shadow_line)
 
 # load dictionary
-password_guesses = load_dictionary("top1000.txt")
+password_guesses = load_dictionary("top10000000.txt")
 shadow_file = load_dictionary("shadow")
 
-# checks the last 20 lines of the shadow doc
+shadow_entries = []
 for shadow_line in shadow_file[11:]:
-    # captures the variables
     shadow_user, user_salt, user_shadow_line = split_shadow(shadow_line)
-    password_found = False
+    shadow_entries.append([shadow_user, user_salt, user_shadow_line.strip()])
 
-# for each line/guess
-    for password_guess in password_guesses:
-        # hash guess
-        hashed_guess = create_hash(password_guess.strip(), user_salt)
-        # compare hash to guess
-        if user_shadow_line == hashed_guess:
-            # print guess
-            print(shadow_user, password_guess.strip())
-            # quit
-            password_found = True
-            break
-        
-    # print not found
-    if password_found == False:
-        print(f"Password not found for {shadow_user}")
+cracked = {}
+count = 0
+
+for password in password_guesses:
+    password = password.strip()
+    count += 1
+    print(f"Count: {count}", end='\r')
+
+    still_uncracked = []
+    
+    for entry in shadow_entries:
+        shadow_user, user_salt, target_hash = entry
+        hashed_guess = create_hash(password, user_salt)
+        if hashed_guess == target_hash:
+            cracked[shadow_user] = password
+            print(f"{shadow_user}: {password}\tFound on Line: {count}")
+        else:
+            still_uncracked.append(entry)
+
+    shadow_entires = still_uncracked
+    if not shadow_entries:
+        break
+
+for shadow_user, user_salt, target_hash in shadow_entires:
+    print(f"{shadow_user}: X")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# # checks the last 20 lines of the shadow doc
+# count = 0
+# for shadow_line in shadow_file[11:]:
+#     # captures the variables
+#     shadow_user, user_salt, user_shadow_line = split_shadow(shadow_line)
+#     password_found = False
+
+# # for each line/guess
+#     for password_guess in password_guesses:
+#         # hash guess
+#         hashed_guess = create_hash(password_guess.strip(), user_salt)
+#         # compare hash to guess
+#         if user_shadow_line == hashed_guess:
+#             # print guess
+#             print(shadow_user, password_guess.strip())
+#             # quit
+#             password_found = True
+#             break
+#         count += 1
+#         print(f"Count: {count}", end='\r')
