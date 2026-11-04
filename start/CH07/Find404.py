@@ -21,6 +21,10 @@ while True:
         break
     if "404" in line:
         if "index.php" in line:
-            print(line)
+            if "95.237.152.217" in line:
+                print(line)
+
+    if "bingbot" in line:
+        print(line)
 
 f.close()
