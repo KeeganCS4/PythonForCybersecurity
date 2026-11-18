@@ -72,24 +72,6 @@ for shadow_user, user_salt, target_hash in shadow_entires:
     print(f"{shadow_user}: X")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # # checks the last 20 lines of the shadow doc
 # count = 0
 # for shadow_line in shadow_file[11:]:
